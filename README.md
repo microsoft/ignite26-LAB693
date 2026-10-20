@@ -32,7 +32,7 @@ Fill in the sections below yourself, then:
 
 # [Microsoft Ignite 2026](https://ignite.microsoft.com)
 
-## 🔥LAB693: Building reliable AI apps and agents with Azure SQL Database
+## 🔥LAB693: Building reliable AI and agents with Azure SQL Database
 ### Session description
 
 Add your session description here. Keep it concise — 2-3 sentences about what attendees will learn and why it matters.
