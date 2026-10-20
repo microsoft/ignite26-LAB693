@@ -37,10 +37,10 @@ foreach ($tool in @(
     }
     $null = Get-Command $tool.Command -ErrorAction Stop
 }
-$sqlcmdHelp = & sqlcmd --help 2>&1 | Out-String
+$sqlcmdHelp = & sqlcmd -? 2>&1 | Out-String
 if ($LASTEXITCODE -ne 0 -or $sqlcmdHelp -notmatch 'authentication-method') {
     Install-Tool 'Microsoft.Sqlcmd'
-    $sqlcmdHelp = & sqlcmd --help 2>&1 | Out-String
+    $sqlcmdHelp = & sqlcmd -? 2>&1 | Out-String
     if ($LASTEXITCODE -ne 0 -or $sqlcmdHelp -notmatch 'authentication-method') {
         throw 'An incompatible sqlcmd shadows Go sqlcmd on PATH. Put the Go sqlcmd installation first, reopen the terminal, and rerun this check.'
     }

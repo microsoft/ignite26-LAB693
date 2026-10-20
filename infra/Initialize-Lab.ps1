@@ -93,7 +93,7 @@ try {
     }
     $null = Get-Command az -ErrorAction Stop
     $null = Get-Command sqlcmd -ErrorAction Stop
-    $sqlcmdHelp = & sqlcmd --help 2>&1 | Out-String
+    $sqlcmdHelp = & sqlcmd -? 2>&1 | Out-String
     if ($LASTEXITCODE -ne 0 -or $sqlcmdHelp -notmatch 'authentication-method') {
         throw 'Go sqlcmd with --authentication-method support is required; the ODBC executable is not sufficient.'
     }

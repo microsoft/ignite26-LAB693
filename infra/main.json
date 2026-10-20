@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.48.1.52935",
-      "templateHash": "16867051463491964733"
+      "templateHash": "13096914777716274790"
     }
   },
   "parameters": {
@@ -185,6 +185,9 @@
       "apiVersion": "2025-06-01",
       "name": "[format('{0}/{1}', format('foundry-{0}-cu', parameters('labId')), 'healthcare')]",
       "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "properties": {
         "displayName": "Healthcare retrieval lab",
         "description": "Dedicated synthetic-case retrieval workshop."

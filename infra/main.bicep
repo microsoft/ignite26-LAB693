@@ -118,6 +118,9 @@ resource project 'Microsoft.CognitiveServices/accounts/projects@2025-06-01' = {
   parent: foundry
   name: 'healthcare'
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
     displayName: 'Healthcare retrieval lab'
     description: 'Dedicated synthetic-case retrieval workshop.'

@@ -80,6 +80,8 @@ test('ARM artifact preserves identities, models, cost configuration and desktop-
   const firewall = resources.find(r => r.type.endsWith('/firewallRules'));
   assert.equal(firewall.properties.startIpAddress, '[parameters(\'desktopStartIpAddress\')]');
   assert.equal(firewall.properties.endIpAddress, '[parameters(\'desktopEndIpAddress\')]');
+  const project = resources.find(r => r.type === 'Microsoft.CognitiveServices/accounts/projects');
+  assert.equal(project.identity?.type, 'SystemAssigned', 'Foundry projects are rejected without their own managed identity');
   const role = resources.find(r => r.type === 'Microsoft.Authorization/roleAssignments');
   assert.equal(role.properties.principalType, 'ServicePrincipal');
   assert.match(template.variables.openAiUserRoleId, /5e0bd9bd-7b93-4f28-af87-19fc36ad61bd/);
@@ -137,6 +139,9 @@ function sqlcmd {
   $Arguments = @($args)
   if ($Arguments[0] -eq '--help') {
     $global:LASTEXITCODE = 0
+    'Usage: sqlcmd [flags] | sqlcmd [command]'
+  } elseif ($Arguments[0] -eq '-?') {
+    $global:LASTEXITCODE = 0
     '--authentication-method'
   } else {
     $Arguments | ConvertTo-Json | Set-Content -LiteralPath ${psLiteral(captured)}
@@ -163,7 +168,12 @@ test('desktop verification requires MSSQL but not Runme for the notebook-only at
     fs.writeFileSync(script, `
 $ErrorActionPreference = 'Stop'
 function az { $global:LASTEXITCODE = 0; '2.90.0' }
-function sqlcmd { $global:LASTEXITCODE = 0; '--authentication-method ActiveDirectoryAzCli' }
+function sqlcmd {
+  $global:LASTEXITCODE = 0
+  if ($args[0] -eq '--help') { 'Usage: sqlcmd [flags] | sqlcmd [command]' }
+  elseif ($args[0] -eq '-?') { '--authentication-method ActiveDirectoryAzCli' }
+  else { 'Version: v1.10.0' }
+}
 function code {
   $global:LASTEXITCODE = 0
   ${hasMssql ? "'ms-mssql.mssql'" : ''}
