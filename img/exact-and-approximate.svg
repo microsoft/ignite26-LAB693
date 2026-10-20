@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">Same query, different retrieval strategies</title>
+  <desc id="desc">Exact kNN calculates cosine distance across all stored vectors and sorts the results. Approximate DiskANN search uses a vector index to retrieve promising neighbors and can return a different top set. The drawing is conceptual, not real embedding coordinates or a measured graph. Inspect the actual plan for Vector Index Seek.</desc>
+  <defs>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:27px;font-weight:700}.label{font-size:21px;font-weight:600}.detail{font-size:16px;fill:#465974}.point{fill:#8a9cb5}.selected{fill:#0e7070;stroke:#ffffff;stroke-width:2}</style>
+  </defs>
+  <rect width="960" height="470" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">Same query, different retrieval strategies</text>
+  <text x="32" y="76" class="detail">Cosine distance sorts ascending: smaller means closer, not more certain.</text>
+  <rect x="32" y="101" width="432" height="279" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <rect x="496" y="101" width="432" height="279" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="52" y="135" class="label">Exact kNN</text>
+  <text x="516" y="135" class="label">Approximate DiskANN</text>
+  <text x="52" y="163" class="detail">Compute every distance, then sort</text>
+  <text x="516" y="163" class="detail">Use the index to find candidate neighbors</text>
+  <g stroke="#d8e1ee" stroke-width="1.5">
+    <path d="M175 249L81 197M175 249L133 207M175 249L225 194M175 249L317 207M175 249L402 223M175 249L94 268M175 249L145 285M175 249L248 250M175 249L327 274M175 249L409 291M175 249L92 326M175 249L216 316M175 249L282 322M175 249L363 328"/>
+  </g>
+  <g class="point">
+    <circle cx="81" cy="197" r="7"/><circle cx="133" cy="207" r="7"/><circle cx="225" cy="194" r="7"/>
+    <circle cx="317" cy="207" r="7"/><circle cx="402" cy="223" r="7"/><circle cx="94" cy="268" r="7"/>
+    <circle cx="145" cy="285" r="7"/><circle cx="248" cy="250" r="7"/><circle cx="327" cy="274" r="7"/>
+    <circle cx="409" cy="291" r="7"/><circle cx="92" cy="326" r="7"/><circle cx="216" cy="316" r="7"/>
+    <circle cx="282" cy="322" r="7"/><circle cx="363" cy="328" r="7"/>
+    <circle cx="545" cy="197" r="7"/><circle cx="597" cy="207" r="7"/><circle cx="689" cy="194" r="7"/>
+    <circle cx="781" cy="207" r="7"/><circle cx="866" cy="223" r="7"/><circle cx="558" cy="268" r="7"/>
+    <circle cx="609" cy="285" r="7"/><circle cx="712" cy="250" r="7"/><circle cx="791" cy="274" r="7"/>
+    <circle cx="873" cy="291" r="7"/><circle cx="556" cy="326" r="7"/><circle cx="680" cy="316" r="7"/>
+    <circle cx="746" cy="322" r="7"/><circle cx="827" cy="328" r="7"/>
+  </g>
+  <ellipse cx="639" cy="250" rx="85" ry="67" fill="#e7f5f2" fill-opacity=".55" stroke="#0e7070" stroke-dasharray="5 4"/>
+  <path d="M827 328L791 274L712 250L639 249L609 285M639 249L597 207" fill="none" stroke="#0e7070" stroke-width="3"/>
+  <circle cx="597" cy="207" r="8" class="selected"/>
+  <circle cx="609" cy="285" r="8" class="selected"/>
+  <circle cx="712" cy="250" r="8" class="selected"/>
+  <path d="M175 237L187 249L175 261L163 249Z" fill="#175cd3" stroke="#ffffff" stroke-width="2"/>
+  <path d="M639 237L651 249L639 261L627 249Z" fill="#175cd3" stroke="#ffffff" stroke-width="2"/>
+  <text x="52" y="365" class="detail">VECTOR_DISTANCE + TOP</text>
+  <text x="516" y="365" class="detail">VECTOR_SEARCH + TOP WITH APPROXIMATE</text>
+  <text x="32" y="411" class="detail">Diamond = query. Dots = stored vectors. Paths and positions are illustrative, not actual index internals.</text>
+  <text x="32" y="441" class="detail">Index existence is not index usage. Verify Vector Index Seek in the actual search plan.</text>
+</svg>
