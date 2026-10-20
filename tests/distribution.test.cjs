@@ -81,3 +81,13 @@ test('the attendee package is flat and independent of the source retrieval direc
     assert.match(text, /!\[[^\]]+\]\(\.\.\/img\/[^)]+\.png\)/, name);
   }
 });
+
+test('the content owners section names a real owner without template placeholders', () => {
+  const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+  const section = readme.split('### 👥 Content owners')[1].split('### ⚖️ Trademarks')[0];
+  for (const placeholder of ['INSERT NAME HERE', 'yourGitHubHandle', 'TODO']) {
+    assert.ok(!section.includes(placeholder), `content owners still contains ${placeholder}`);
+  }
+  assert.match(section, /https:\/\/github\.com\/itsnotaboutthecell\.png/);
+  assert.match(section, /<b>Alex Powers<\/b>/);
+});

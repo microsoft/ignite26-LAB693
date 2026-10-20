@@ -131,17 +131,12 @@ For more information, visit the [Learn MCP Server repo](https://aka.ms/learnmcp)
 
 ### 👥 Content owners
 
-<!-- TODO: Add yourself as a content owner
-1. Change the src in the image tag to {your github url}.png
-2. Change INSERT NAME HERE to your name
-3. Change the github url in the final href to your url. -->
-
 <table>
 <tr>
-    <td align="center"><a href="http://github.com/yourGitHubHandle">
-        <img src="https://github.com/yourGitHubHandle.png" width="100px;" alt="INSERT NAME HERE"/><br />
-        <sub><b>INSERT NAME HERE</b></sub></a><br />
-            <a href="https://github.com/yourGitHubHandle" title="talk">📢</a>
+    <td align="center"><a href="https://github.com/itsnotaboutthecell">
+        <img src="https://github.com/itsnotaboutthecell.png" width="100px;" alt="Alex Powers"/><br />
+        <sub><b>Alex Powers</b></sub></a><br />
+            <a href="https://github.com/itsnotaboutthecell" title="talk">📢</a>
     </td>
 </tr></table>
 
