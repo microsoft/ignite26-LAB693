@@ -35,41 +35,71 @@ Fill in the sections below yourself, then:
 ## 🔥LAB693: Building reliable AI and agents with Azure SQL Database
 ### Session description
 
-Add your session description here. Keep it concise — 2-3 sentences about what attendees will learn and why it matters.
+Build a retrieval foundation for reliable AI experiences with Azure SQL Database
+and Microsoft Foundry. In four SQL notebooks, follow 207 synthetic clinical
+cases from full-text search through embeddings, vector search, and hybrid
+ranking with reciprocal rank fusion (RRF). An optional final exercise extracts
+intent from a narrative and routes focused requests to retrieval.
+
+This lab demonstrates retrieval techniques; it does not build an autonomous
+agent or provide medical advice, diagnoses, or treatment guidance.
 
 ### 🚀 Getting started
 
 #### In a guided session
 
-If you're following along during a live session:
+If you're following along during a live session, use the dedicated lab
+environment provided by your host:
 
-1. Step 1
-2. Step 2
-3. Open [`instructions/`](instructions/README.md) when this session includes
-   attendee step-by-step guidance
+1. Open this repository in Visual Studio Code and select the **MSSQL** kernel.
+2. Connect to the prepared `Healthcare` database with your assigned Microsoft
+   Entra account. Do not connect to `master`, a shared database, or production data.
+3. Open [Lab 1: Beyond Keywords](instructions/01-beyond-keywords.ipynb) and run
+   the readiness checkpoint. Every required check must say **Yes**.
+4. Follow the [attendee guide](instructions/README.md) and complete all four
+   notebooks in order, one SQL cell at a time—not **Run All**.
 
 #### On your own
 
-If you're learning at your own pace:
+The notebooks require a prepared Azure environment; cloning this repository
+alone does not create one.
 
-1. Clone this repository
-2. Set up your environment
-3. Follow the session guidance in [`instructions/`](instructions/README.md), or
-   use the linked docs-site entry point when this repository uses that pattern
+1. Clone the repository and install Visual Studio Code with the MSSQL extension.
+2. Review the [lab setup and prerequisites](instructions/README.md).
+3. Prepare a dedicated lab environment using the [host deployment guide](infra/README.md).
+4. Start with [Lab 1](instructions/01-beyond-keywords.ipynb), then follow the
+   attendee guide and continue through the notebooks:
+
+   - [1. Beyond Keywords](instructions/01-beyond-keywords.ipynb)
+   - [2. From Case Notes to Vectors](instructions/02-case-notes-to-vectors.ipynb)
+   - [3. Search by Meaning](instructions/03-search-by-meaning.ipynb)
+   - [4. From Narrative to Better Results](instructions/04-narrative-to-results.ipynb)
 
 ### 🎯 Learning outcomes
 
 By the end of this session, you will be able to:
 
-- Outcome 1
-- Outcome 2
-- Outcome 3
+- Explain how full-text retrieval and semantic vector search can complement
+  one another when matching a request to relevant case text.
+- Prepare traceable chunks and embeddings, compare exact and approximate
+  vector search, and verify when the vector index is used.
+- Combine lexical and semantic ranks with RRF and optionally route validated
+  intent to retrieval without making intent detection a prerequisite.
 
 ### 💻 Technologies used
 
-- Technology 1
-- Technology 2
-- Technology 3
+- **Azure SQL Database and T-SQL:** full-text search, text chunking, vector
+  embeddings, cosine-distance search, DiskANN, and RRF hybrid ranking.
+- **Microsoft Foundry:** `text-embedding-3-small` embeddings and the optional
+  `gpt-5-nano` intent-extraction exercise.
+- **Microsoft Entra ID and managed identity:** authenticate to SQL and let the
+  SQL server identity call Foundry without embedding API keys in the lab.
+- **Visual Studio Code and the MSSQL extension:** run and inspect SQL notebooks.
+
+The optional [intent exercise](instructions/04-narrative-to-results.ipynb)
+requires additional host setup. Azure resources and model inference can incur
+charges. Read the [attendee guide](instructions/README.md) for safety, cost,
+readiness, recovery, and cleanup details.
 
 ### 📚 Continue your learning
 
@@ -101,17 +131,12 @@ For more information, visit the [Learn MCP Server repo](https://aka.ms/learnmcp)
 
 ### 👥 Content owners
 
-<!-- TODO: Add yourself as a content owner
-1. Change the src in the image tag to {your github url}.png
-2. Change INSERT NAME HERE to your name
-3. Change the github url in the final href to your url. -->
-
 <table>
 <tr>
-    <td align="center"><a href="http://github.com/yourGitHubHandle">
-        <img src="https://github.com/yourGitHubHandle.png" width="100px;" alt="INSERT NAME HERE"/><br />
-        <sub><b>INSERT NAME HERE</b></sub></a><br />
-            <a href="https://github.com/yourGitHubHandle" title="talk">📢</a>
+    <td align="center"><a href="https://github.com/itsnotaboutthecell">
+        <img src="https://github.com/itsnotaboutthecell.png" width="100px;" alt="Alex Powers"/><br />
+        <sub><b>Alex Powers</b></sub></a><br />
+            <a href="https://github.com/itsnotaboutthecell" title="talk">📢</a>
     </td>
 </tr></table>
 

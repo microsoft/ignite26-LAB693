@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title desc">
+  <title id="title">Fuse ranks, not incompatible raw scores</title>
+  <desc id="desc">In the deterministic fixture, lexical ranks are case 1 first and case 2 second; vector ranks are case 2 first and case 3 second. RRF sums one divided by 60 plus each rank. Case 2 scores about 0.03252247, case 1 about 0.01639344, and case 3 about 0.01612903. Missing channels contribute zero.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526580"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:27px;font-weight:700}.label{font-size:20px;font-weight:600}.detail{font-size:17px;fill:#465974}.line{fill:none;stroke:#526580;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="960" height="440" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">Fuse ranks, not incompatible raw scores</text>
+  <text x="32" y="77" class="detail">RRF score = sum of 1 / (60 + rank). A missing list contributes zero.</text>
+  <rect x="32" y="104" width="260" height="114" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="50" y="135" class="label">Lexical ranking</text>
+  <text x="50" y="168" class="detail">1. Case 1</text>
+  <rect x="43" y="181" width="238" height="28" rx="5" fill="#e7f5f2"/>
+  <text x="50" y="202" class="detail">2. Case 2</text>
+  <rect x="32" y="246" width="260" height="114" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="50" y="278" class="label">Vector ranking</text>
+  <rect x="43" y="289" width="238" height="28" rx="5" fill="#e7f5f2"/>
+  <text x="50" y="310" class="detail">1. Case 2</text>
+  <text x="50" y="344" class="detail">2. Case 3</text>
+  <rect x="360" y="176" width="198" height="112" rx="12" fill="#eaf2ff" stroke="#7ba5e4"/>
+  <text x="379" y="209" class="label">Case 2</text>
+  <text x="379" y="239" class="detail">1/62 + 1/61</text>
+  <text x="379" y="269" class="detail">= 0.03252247...</text>
+  <path d="M292 195H322V210H350" class="line"/>
+  <path d="M292 302H322V254H350" class="line"/>
+  <rect x="626" y="124" width="302" height="216" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="645" y="159" class="label">Fused ranking</text>
+  <rect x="637" y="180" width="280" height="39" rx="6" fill="#e7f5f2"/>
+  <text x="645" y="207" class="label">1. Case 2</text>
+  <text x="780" y="207" class="detail">0.03252247</text>
+  <text x="645" y="252" class="detail">2. Case 1</text>
+  <text x="780" y="252" class="detail">0.01639344</text>
+  <text x="645" y="297" class="detail">3. Case 3</text>
+  <text x="780" y="297" class="detail">0.01612903</text>
+  <path d="M558 232H616" class="line"/>
+  <text x="32" y="400" class="detail">Case 2 wins by appearing near the top of both lists. Its score is not a probability.</text>
+  <text x="32" y="427" class="detail">This is the notebook's deterministic ranking fixture, not a measured medical relevance result.</text>
+</svg>

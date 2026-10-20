@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Keep the text, its meaning, and its source together</title>
+  <desc id="desc">Combine complaint and symptoms from one source case. Split long text into chunks of 800 characters with 10 percent overlap, or 80 characters. Embed each chunk using the same model and store its case ID, text, and 1536-dimensional vector. The two-chunk picture is conceptual; short cases may have one chunk.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526580"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:25px;font-weight:700}.label{font-size:19px;font-weight:600}.detail{font-size:16px;fill:#465974}.line{fill:none;stroke:#526580;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">Keep the text, its meaning, and its source together</text>
+  <text x="32" y="76" class="detail">Chunking chooses a retrieval unit. Embedding gives that unit a model-specific representation.</text>
+  <rect x="32" y="133" width="194" height="140" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="50" y="165" class="label">Source case</text>
+  <text x="50" y="197" class="detail">CaseId</text>
+  <text x="50" y="225" class="detail">Complaint</text>
+  <text x="50" y="253" class="detail">+ Symptoms</text>
+  <path d="M226 203H268" class="line"/>
+  <text x="288" y="119" class="label">Split the combined text</text>
+  <rect x="288" y="140" width="278" height="50" rx="8" fill="#eaf2ff" stroke="#7ba5e4"/>
+  <rect x="522" y="140" width="44" height="50" rx="4" fill="#ffe2b8"/>
+  <text x="302" y="172" class="detail">Chunk A: up to 800 characters</text>
+  <path d="M544 191V203H310V213" fill="none" stroke="#a65308" stroke-width="2" stroke-dasharray="4 3"/>
+  <rect x="288" y="214" width="44" height="50" rx="4" fill="#ffe2b8"/>
+  <rect x="332" y="214" width="234" height="50" rx="8" fill="#eaf2ff" stroke="#7ba5e4"/>
+  <text x="346" y="245" class="detail">Chunk B: the next text</text>
+  <text x="288" y="294" class="detail">10% overlap = 80 characters</text>
+  <text x="288" y="320" class="detail">Each chunk keeps the CaseId</text>
+  <path d="M566 203H604" class="line"/>
+  <rect x="614" y="141" width="134" height="123" rx="12" fill="#e7f5f2" stroke="#0e7070"/>
+  <text x="629" y="174" class="label">Embedding</text>
+  <text x="629" y="200" class="label">model</text>
+  <text x="629" y="234" class="detail">Same model</text>
+  <text x="629" y="255" class="detail">for all chunks</text>
+  <path d="M748 203H784" class="line"/>
+  <rect x="794" y="123" width="134" height="160" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="807" y="156" class="label">Store in SQL</text>
+  <text x="807" y="189" class="detail">CaseId</text>
+  <text x="807" y="217" class="detail">Chunk text</text>
+  <text x="807" y="245" class="detail">VECTOR(1536)</text>
+  <text x="807" y="272" class="detail">[0.1, ...]</text>
+  <rect x="32" y="348" width="896" height="58" rx="10" fill="#fff4e5"/>
+  <text x="49" y="372" class="detail">Conceptual long-text example: many of our short cases produce only one chunk.</text>
+  <text x="49" y="395" class="detail">Successful embeddings persist. A rerun processes only chunks whose vector is still NULL.</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Optional intent extraction: decide before retrieving</title>
+  <desc id="desc">A narrative with additional context is sent to a chat model to extract Intent, TextQuery, and VectorQuery. Invalid JSON or output that does not meet the contract fails explicitly. Valid SearchCases output invokes hybrid retrieval; Clarify and OutOfScope return visible no-retrieval outcomes. Valid structure alone does not prove correct symptom extraction.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526580"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:25px;font-weight:700}.label{font-size:19px;font-weight:600}.detail{font-size:16px;fill:#465974}.line{fill:none;stroke:#526580;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="960" height="420" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">Optional intent extraction: decide before retrieving</text>
+  <text x="32" y="76" class="detail">The core hybrid search works without this branch or a chat model.</text>
+  <rect x="32" y="154" width="161" height="105" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="48" y="186" class="label">Narrative</text>
+  <text x="48" y="216" class="detail">Current symptoms</text>
+  <text x="48" y="243" class="detail">+ additional detail</text>
+  <rect x="239" y="154" width="172" height="105" rx="12" fill="#fff4e5" stroke="#a65308" stroke-dasharray="5 4"/>
+  <text x="255" y="184" class="label">Chat extraction</text>
+  <text x="255" y="214" class="detail">Intent + text query</text>
+  <text x="255" y="241" class="detail">+ vector query</text>
+  <path d="M193 207H229" class="line"/>
+  <rect x="457" y="154" width="177" height="105" rx="12" fill="#eaf2ff" stroke="#7ba5e4"/>
+  <text x="473" y="184" class="label">Validate JSON</text>
+  <text x="473" y="214" class="detail">Fields, types, limits</text>
+  <text x="473" y="241" class="detail">Allowed intent</text>
+  <path d="M411 207H447" class="line"/>
+  <rect x="722" y="105" width="206" height="67" rx="10" fill="#e7f5f2" stroke="#0e7070"/>
+  <text x="738" y="131" class="label">SearchCases</text>
+  <text x="738" y="156" class="detail">Run hybrid retrieval</text>
+  <rect x="722" y="188" width="206" height="67" rx="10" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="738" y="214" class="label">Clarify</text>
+  <text x="738" y="239" class="detail">No retrieval; show intent</text>
+  <rect x="722" y="271" width="206" height="67" rx="10" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="738" y="297" class="label">OutOfScope</text>
+  <text x="738" y="322" class="detail">No retrieval; show intent</text>
+  <path d="M634 207H674V138H712" class="line"/>
+  <path d="M674 207V221H712" class="line"/>
+  <path d="M674 221V304H712" class="line"/>
+  <path d="M545 259V299" class="line"/>
+  <text x="459" y="326" class="label">Invalid? Stop explicitly.</text>
+  <text x="32" y="376" class="detail">Inspect meaning too: retain current chest pain; omit denied fever, family history, and others' symptoms.</text>
+  <text x="32" y="403" class="detail">Valid JSON is not proof of correct extraction. This is retrieval routing, not medical reasoning.</text>
+</svg>

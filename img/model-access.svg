@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+  <title id="title">Two identities, two jobs</title>
+  <desc id="desc">A participant authenticates to Azure SQL with Microsoft Entra. Inside the database, an external model is associated with a database-scoped credential. The SQL server managed identity uses that credential to call an embedding deployment in Foundry. Registration does not itself make an inference call.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526580"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:27px;font-weight:700}.label{font-size:20px;font-weight:600}.detail{font-size:17px;fill:#465974}.line{fill:none;stroke:#526580;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="960" height="400" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">Two identities, two jobs</text>
+  <text x="32" y="76" class="detail">Your database login and the model caller are not the same identity.</text>
+  <rect x="32" y="151" width="174" height="112" rx="12" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="50" y="184" class="label">Participant</text>
+  <text x="50" y="214" class="detail">VS Code + MSSQL</text>
+  <text x="50" y="242" class="detail">Entra account</text>
+  <rect x="276" y="108" width="350" height="220" rx="14" fill="#eaf2ff" stroke="#7ba5e4"/>
+  <text x="297" y="143" class="label">Azure SQL: Healthcare</text>
+  <rect x="297" y="164" width="308" height="68" rx="9" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="313" y="191" class="label">Registered external model</text>
+  <text x="313" y="217" class="detail">Name + deployment URL</text>
+  <text x="297" y="262" class="detail">Database-scoped credential</text>
+  <text x="297" y="289" class="detail">SQL server managed identity</text>
+  <text x="297" y="314" class="detail">Prepared inference permissions</text>
+  <path d="M206 207H266" class="line"/>
+  <text x="216" y="189" class="detail">SQL</text>
+  <rect x="746" y="151" width="182" height="112" rx="12" fill="#e7f5f2" stroke="#0e7070"/>
+  <text x="765" y="184" class="label">Foundry</text>
+  <text x="765" y="214" class="detail">Embedding</text>
+  <text x="765" y="242" class="detail">deployment</text>
+  <path d="M626 194H736" class="line"/>
+  <text x="645" y="176" class="detail">Inference</text>
+  <path d="M746 246H636" class="line"/>
+  <text x="648" y="275" class="detail">Vector</text>
+  <text x="32" y="365" class="detail">Registration configures the route. The explicit embedding call tests real access.</text>
+  <text x="32" y="390" class="detail">The model runs in Foundry, not inside the SQL engine. No API key is embedded in the notebook.</text>
+</svg>

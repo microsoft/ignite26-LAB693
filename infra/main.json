@@ -1,0 +1,277 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.48.1.52935",
+      "templateHash": "16867051463491964733"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "centralus",
+      "metadata": {
+        "description": "Azure region with SQL vector-search support and quota for both selected model versions."
+      }
+    },
+    "labId": {
+      "type": "string",
+      "defaultValue": "[uniqueString(resourceGroup().id)]",
+      "minLength": 3,
+      "maxLength": 40,
+      "metadata": {
+        "description": "Unique lowercase letters/numbers/hyphens identifying one isolated lab instance."
+      }
+    },
+    "administratorObjectId": {
+      "type": "string",
+      "metadata": {
+        "description": "Object ID of the participant Entra user or dedicated lab administrator group."
+      }
+    },
+    "administratorName": {
+      "type": "string",
+      "metadata": {
+        "description": "Display name or UPN of the Entra administrator."
+      }
+    },
+    "administratorType": {
+      "type": "string",
+      "defaultValue": "User",
+      "allowedValues": [
+        "User",
+        "Group"
+      ]
+    },
+    "desktopStartIpAddress": {
+      "type": "string",
+      "metadata": {
+        "description": "First public IPv4 address of the skilling desktop egress range. No wildcard default."
+      }
+    },
+    "desktopEndIpAddress": {
+      "type": "string",
+      "metadata": {
+        "description": "Last public IPv4 address of the skilling desktop egress range; use the same address for one IP."
+      }
+    },
+    "includeChat": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Include the optional notebook 4 intent exercise."
+      }
+    },
+    "modelDeploymentSku": {
+      "type": "string",
+      "defaultValue": "DataZoneStandard",
+      "allowedValues": [
+        "DataZoneStandard",
+        "GlobalStandard"
+      ],
+      "metadata": {
+        "description": "GlobalStandard is an explicit change in inference processing boundary, never a fallback."
+      }
+    },
+    "embeddingCapacity": {
+      "type": "int",
+      "defaultValue": 100,
+      "minValue": 1
+    },
+    "chatCapacity": {
+      "type": "int",
+      "defaultValue": 100,
+      "minValue": 1
+    },
+    "embeddingModelVersion": {
+      "type": "string",
+      "defaultValue": "1"
+    },
+    "chatModelVersion": {
+      "type": "string",
+      "defaultValue": "2025-08-07"
+    }
+  },
+  "variables": {
+    "tags": {
+      "purpose": "sql-ai-retrieval-lab",
+      "labId": "[parameters('labId')]"
+    },
+    "openAiUserRoleId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '5e0bd9bd-7b93-4f28-af87-19fc36ad61bd')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2023-08-01",
+      "name": "[format('sqlai-{0}-cu', parameters('labId'))]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "version": "12.0",
+        "minimalTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "administrators": {
+          "administratorType": "ActiveDirectory",
+          "azureADOnlyAuthentication": true,
+          "principalType": "[parameters('administratorType')]",
+          "login": "[parameters('administratorName')]",
+          "sid": "[parameters('administratorObjectId')]",
+          "tenantId": "[subscription().tenantId]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2023-08-01",
+      "name": "[format('{0}/{1}', format('sqlai-{0}-cu', parameters('labId')), 'SkillingDesktop')]",
+      "properties": {
+        "startIpAddress": "[parameters('desktopStartIpAddress')]",
+        "endIpAddress": "[parameters('desktopEndIpAddress')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2023-08-01",
+      "name": "[format('{0}/{1}', format('sqlai-{0}-cu', parameters('labId')), 'Healthcare')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "sku": {
+        "name": "GP_S_Gen5_2",
+        "tier": "GeneralPurpose",
+        "family": "Gen5",
+        "capacity": 2
+      },
+      "properties": {
+        "minCapacity": "[json('0.5')]",
+        "autoPauseDelay": 60,
+        "maxSizeBytes": 34359738368,
+        "requestedBackupStorageRedundancy": "Local",
+        "useFreeLimit": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2025-06-01",
+      "name": "[format('foundry-{0}-cu', parameters('labId'))]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "kind": "AIServices",
+      "sku": {
+        "name": "S0"
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "customSubDomainName": "[format('foundry-{0}-cu', parameters('labId'))]",
+        "allowProjectManagement": true,
+        "disableLocalAuth": true,
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/projects",
+      "apiVersion": "2025-06-01",
+      "name": "[format('{0}/{1}', format('foundry-{0}-cu', parameters('labId')), 'healthcare')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "displayName": "Healthcare retrieval lab",
+        "description": "Dedicated synthetic-case retrieval workshop."
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId')))]",
+      "name": "[guid(resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId'))), resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId'))), variables('openAiUserRoleId'))]",
+      "properties": {
+        "roleDefinitionId": "[variables('openAiUserRoleId')]",
+        "principalId": "[reference(resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId'))), '2023-08-01', 'full').identity.principalId]",
+        "principalType": "ServicePrincipal"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId')))]",
+        "[resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2025-06-01",
+      "name": "[format('{0}/{1}', format('foundry-{0}-cu', parameters('labId')), 'text-embedding-3-small')]",
+      "sku": {
+        "name": "[parameters('modelDeploymentSku')]",
+        "capacity": "[parameters('embeddingCapacity')]"
+      },
+      "properties": {
+        "model": {
+          "format": "OpenAI",
+          "name": "text-embedding-3-small",
+          "version": "[parameters('embeddingModelVersion')]"
+        },
+        "versionUpgradeOption": "NoAutoUpgrade"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId')))]",
+        "[resourceId('Microsoft.CognitiveServices/accounts/projects', format('foundry-{0}-cu', parameters('labId')), 'healthcare')]"
+      ]
+    },
+    {
+      "condition": "[parameters('includeChat')]",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2025-06-01",
+      "name": "[format('{0}/{1}', format('foundry-{0}-cu', parameters('labId')), 'gpt-5-nano')]",
+      "sku": {
+        "name": "[parameters('modelDeploymentSku')]",
+        "capacity": "[parameters('chatCapacity')]"
+      },
+      "properties": {
+        "model": {
+          "format": "OpenAI",
+          "name": "gpt-5-nano",
+          "version": "[parameters('chatModelVersion')]"
+        },
+        "versionUpgradeOption": "NoAutoUpgrade"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts/deployments', format('foundry-{0}-cu', parameters('labId')), 'text-embedding-3-small')]",
+        "[resourceId('Microsoft.CognitiveServices/accounts', format('foundry-{0}-cu', parameters('labId')))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "sqlServerFqdn": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId'))), '2023-08-01').fullyQualifiedDomainName]"
+    },
+    "databaseName": {
+      "type": "string",
+      "value": "Healthcare"
+    },
+    "foundryAccountName": {
+      "type": "string",
+      "value": "[format('foundry-{0}-cu', parameters('labId'))]"
+    },
+    "includeChat": {
+      "type": "bool",
+      "value": "[parameters('includeChat')]"
+    },
+    "sqlManagedIdentityObjectId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Sql/servers', format('sqlai-{0}-cu', parameters('labId'))), '2023-08-01', 'full').identity.principalId]"
+    }
+  }
+}

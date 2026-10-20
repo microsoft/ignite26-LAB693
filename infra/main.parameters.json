@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorObjectId": { "value": "REPLACE-WITH-ENTRA-OBJECT-ID" },
+    "administratorName": { "value": "REPLACE-WITH-PARTICIPANT-UPN-OR-GROUP-NAME" },
+    "desktopStartIpAddress": { "value": "REPLACE-WITH-DESKTOP-EGRESS-IP" },
+    "desktopEndIpAddress": { "value": "REPLACE-WITH-DESKTOP-EGRESS-IP" }
+  }
+}

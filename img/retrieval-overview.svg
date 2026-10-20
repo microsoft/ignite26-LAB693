@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-labelledby="title desc">
+  <title id="title">One scenario, two ways to retrieve</title>
+  <desc id="desc">Prepare source cases as chunks and stored vectors. At query time, lexical and semantic retrieval produce ranked case lists that merge through reciprocal rank fusion. Optional intent extraction refines a narrative before searching; it is not required for the core path.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526580"/></marker>
+    <style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172b4d}.heading{font-size:27px;font-weight:700}.label{font-size:19px;font-weight:600}.detail{font-size:16px;fill:#465974}.line{fill:none;stroke:#526580;stroke-width:2;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="960" height="440" rx="16" fill="#f5f7fb"/>
+  <text x="32" y="44" class="heading">One scenario, two ways to retrieve</text>
+  <text x="32" y="75" class="detail">Prepare the data once. Inspect the evidence every time you search.</text>
+  <text x="32" y="109" class="detail">DATA PREPARATION</text>
+  <g fill="#ffffff" stroke="#c3cedd" stroke-width="1.5">
+    <rect x="32" y="123" width="180" height="76" rx="10"/>
+    <rect x="270" y="123" width="180" height="76" rx="10"/>
+    <rect x="508" y="123" width="180" height="76" rx="10"/>
+    <rect x="746" y="123" width="182" height="76" rx="10"/>
+  </g>
+  <text x="49" y="154" class="label">Source cases</text>
+  <text x="49" y="180" class="detail">Case description</text>
+  <text x="288" y="154" class="label">Text chunks</text>
+  <text x="288" y="180" class="detail">Keep the source ID</text>
+  <text x="526" y="154" class="label">Embedding call</text>
+  <text x="526" y="180" class="detail">Model runs in Foundry</text>
+  <text x="764" y="154" class="label">Stored vectors</text>
+  <text x="764" y="180" class="detail">Beside the chunk text</text>
+  <path d="M212 161H260" class="line"/>
+  <path d="M450 161H498" class="line"/>
+  <path d="M688 161H736" class="line"/>
+  <text x="270" y="238" class="detail">QUERY-TIME RETRIEVAL</text>
+  <rect x="32" y="230" width="180" height="54" rx="10" fill="#fff4e5" stroke="#a65308" stroke-dasharray="5 4"/>
+  <text x="49" y="252" class="detail">OPTIONAL</text>
+  <text x="49" y="274" class="label">Intent extraction</text>
+  <path d="M122 284V312" class="line" stroke-dasharray="5 4"/>
+  <rect x="32" y="322" width="180" height="60" rx="10" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="49" y="357" class="label">Search query</text>
+  <g fill="#eaf2ff" stroke="#7ba5e4">
+    <rect x="300" y="262" width="210" height="56" rx="10"/>
+    <rect x="300" y="342" width="210" height="56" rx="10"/>
+  </g>
+  <text x="318" y="286" class="label">Lexical ranking</text>
+  <text x="318" y="308" class="detail">Match source words</text>
+  <text x="318" y="366" class="label">Vector ranking</text>
+  <text x="318" y="388" class="detail">Compare meaning</text>
+  <path d="M212 352H248V290H290" class="line"/>
+  <path d="M248 352V370H290" class="line"/>
+  <rect x="594" y="310" width="130" height="62" rx="10" fill="#e7f5f2" stroke="#0e7070"/>
+  <text x="612" y="336" class="label">RRF</text>
+  <text x="612" y="358" class="detail">Fuse ranks</text>
+  <path d="M510 290H548V332H584" class="line"/>
+  <path d="M510 370H548V348H584" class="line"/>
+  <rect x="790" y="310" width="138" height="62" rx="10" fill="#ffffff" stroke="#c3cedd"/>
+  <text x="806" y="336" class="label">Ranked cases</text>
+  <text x="806" y="358" class="detail">Inspect the text</text>
+  <path d="M724 341H780" class="line"/>
+  <text x="32" y="427" class="detail">A useful match is evidence to inspect, not a diagnosis or a probability.</text>
+</svg>
