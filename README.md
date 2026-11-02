@@ -32,7 +32,7 @@ Fill in the sections below yourself, then:
 
 # [Microsoft Ignite 2026](https://ignite.microsoft.com)
 
-## 🔥LAB693: Building reliable AI and agents with Azure SQL Database
+## 🔥 LAB693: Building search for AI apps and agents with Azure SQL Database
 ### Session description
 
 Build a retrieval foundation for reliable AI experiences with Azure SQL Database
@@ -88,13 +88,15 @@ By the end of this session, you will be able to:
 
 ### 💻 Technologies used
 
-- **Azure SQL Database and T-SQL:** full-text search, text chunking, vector
-  embeddings, cosine-distance search, DiskANN, and RRF hybrid ranking.
+- **Azure SQL Database and T-SQL:** [full-text search](https://learn.microsoft.com/en-us/sql/relational-databases/search/full-text-search),
+  text chunking, vector embeddings, cosine-distance [vector search](https://learn.microsoft.com/en-us/sql/relational-databases/vectors/vector-search),
+  DiskANN, and RRF hybrid ranking.
 - **Microsoft Foundry:** `text-embedding-3-small` embeddings and the optional
   `gpt-5-nano` intent-extraction exercise.
 - **Microsoft Entra ID and managed identity:** authenticate to SQL and let the
   SQL server identity call Foundry without embedding API keys in the lab.
-- **Visual Studio Code and the MSSQL extension:** run and inspect SQL notebooks.
+- **Visual Studio Code and the MSSQL extension:** run and inspect
+  [SQL notebooks](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-sql-notebooks?view=sql-server-ver17).
 
 The optional [intent exercise](instructions/04-narrative-to-results.ipynb)
 requires additional host setup. Azure resources and model inference can incur
