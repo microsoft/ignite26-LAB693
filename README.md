@@ -136,6 +136,11 @@ For more information, visit the [Learn MCP Server repo](https://aka.ms/learnmcp)
 
 <table>
 <tr>
+    <td align="center"><a href="https://github.com/Iqra617">
+        <img src="https://github.com/Iqra617.png" width="100px;" alt="Iqra Shaikh"/><br />
+        <sub><b>Iqra Shaikh</b></sub></a><br />
+            <a href="https://github.com/Iqra617" title="talk">📢</a>
+    </td>
     <td align="center"><a href="https://github.com/itsnotaboutthecell">
         <img src="https://github.com/itsnotaboutthecell.png" width="100px;" alt="Alex Powers"/><br />
         <sub><b>Alex Powers</b></sub></a><br />
