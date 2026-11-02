@@ -89,12 +89,13 @@ By the end of this session, you will be able to:
 ### 💻 Technologies used
 
 - **Azure SQL Database and T-SQL:** [full-text search](https://learn.microsoft.com/en-us/sql/relational-databases/search/full-text-search),
-  text chunking, vector embeddings, cosine-distance [vector search](https://learn.microsoft.com/en-us/sql/relational-databases/vectors/vector-search),
+  text chunking, vector embeddings, cosine-distance [vector search and indexes](https://learn.microsoft.com/en-us/sql/t-sql/functions/vector-search-transact-sql?view=sql-server-ver17),
   DiskANN, and RRF hybrid ranking.
-- **Microsoft Foundry:** `text-embedding-3-small` embeddings and the optional
+- **Microsoft Foundry:** [`text-embedding-3-small` embeddings](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/embeddings) and the optional
   `gpt-5-nano` intent-extraction exercise.
-- **Microsoft Entra ID and managed identity:** authenticate to SQL and let the
-  SQL server identity call Foundry without embedding API keys in the lab.
+- **Microsoft Entra ID and managed identity:** [authenticate to Azure SQL](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview?view=azuresql)
+  and let the SQL server identity [call external REST endpoints](https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql?view=sql-server-ver17)
+  without embedding API keys in the lab.
 - **Visual Studio Code and the MSSQL extension:** run and inspect
   [SQL notebooks](https://learn.microsoft.com/en-us/sql/tools/visual-studio-code-extensions/mssql/mssql-sql-notebooks?view=sql-server-ver17).
 

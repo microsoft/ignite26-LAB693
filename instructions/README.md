@@ -150,5 +150,7 @@ resource charges.
 ## More information
 
 - [Full-text search](https://learn.microsoft.com/en-us/sql/relational-databases/search/full-text-search)
-- [Vector search in the SQL database engine](https://learn.microsoft.com/en-us/sql/relational-databases/vectors/vector-search)
-- [Retrieval-augmented generation](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/retrieval-augmented-generation)
+- [Vector search and indexes in Azure SQL](https://learn.microsoft.com/en-us/sql/t-sql/functions/vector-search-transact-sql?view=sql-server-ver17)
+- [Generate embeddings with Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/embeddings)
+- [Call external REST endpoints from Azure SQL](https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql?view=sql-server-ver17)
+- [Microsoft Entra authentication for Azure SQL](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview?view=azuresql)
