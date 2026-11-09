@@ -91,8 +91,6 @@ Pick your next step based on your learning style:
 
 ### 🌟 Microsoft Learn MCP Server
 
-<!-- Remove this section if the Microsoft Learn MCP Server is not relevant to the session. -->
-
 The Microsoft Learn MCP Server gives your AI agent direct access to Microsoft's official documentation — grounded, up-to-date answers about the topics in this session.
 
 **GitHub Copilot CLI** — Install with:
