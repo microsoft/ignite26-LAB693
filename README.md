@@ -26,8 +26,7 @@ If you're following along during a live session, use the dedicated lab
 environment provided by your host:
 
 Start with [00: SQL setup](instructions/00-setup.ipynb) to save the deployed
-Foundry endpoint in the database before notebook 01. No PowerShell is required
-for attendees.
+Foundry endpoint in the database before notebook 01.
 
 1. Open this repository in Visual Studio Code and select the **MSSQL** kernel.
 2. Connect to the prepared `Healthcare` database with your assigned Microsoft
