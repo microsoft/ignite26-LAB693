@@ -14,6 +14,11 @@ exercise is optional; it is not required for core retrieval.
 
 ## Follow the scenario
 
+**Before notebook 01:** run [00: SQL setup](00-setup.ipynb) on the pre-deployed
+Skillable VM. Paste the Foundry resource endpoint once and create the database
+master key and managed-identity credential using SQL cells. No attendee
+PowerShell, installation, or Azure deployment is required.
+
 | Notebook | Your question | What you build or inspect |
 |---|---|---|
 | [1. Beyond Keywords](01-beyond-keywords.ipynb) | Why can matching words miss a relevant case? | Full-text retrieval, the semantic gap, and the external embedding model association. |
@@ -34,7 +39,8 @@ implement provider-specific VM provisioning or login automation.
 1. Open the repository root in Visual Studio Code and select the **MSSQL** kernel.
 2. Connect to the prepared `Healthcare` database with the assigned Microsoft
    Entra identity. Never use `master`, production data, or a shared database.
-3. Open [Lab 1](01-beyond-keywords.ipynb) and run its read-only readiness check.
+3. Run [00: SQL setup](00-setup.ipynb), then open [Lab 1](01-beyond-keywords.ipynb)
+   and run its read-only readiness check.
    Every required result must be **Yes**.
 4. Run the notebooks in order, **one SQL cell at a time**. Do not use **Run All**.
 5. Read the explanation before each cell and review its expected result.
@@ -49,8 +55,9 @@ facilitator. Do not bypass it by switching databases.
 
 ## Learn at your own pace
 
-Cloning the repository alone does not create the Azure environment. Review the
-[host deployment guide](../infra/README.md) before creating resources. You need:
+Cloning the repository alone does not create the Azure environment. Follow
+the [host deployment guide](../infra/README.md) to prepare resources and case
+data, then [00: SQL setup](00-setup.ipynb) before opening notebook 01. You need:
 
 - Windows, Visual Studio Code, and the MSSQL extension.
 - An Azure subscription and permissions to create the dedicated SQL and Foundry
@@ -60,7 +67,8 @@ Cloning the repository alone does not create the Azure environment. Review the
 - Regional availability and sufficient quota for the workshop's embedding
   model and, if using the optional exercise, its chat model.
 
-The host prepares the database and managed-identity credential. Participants
+The host prepares the database and cases. Notebook 00 creates the master key
+and managed-identity credential, or reuses matching host-prepared objects. Participants
 register the external embedding model, build the retrieval structures, and
 generate vectors themselves. Do not pre-create the full-text index, chunks,
 embeddings, vector index, or retrieval procedure.
@@ -79,10 +87,12 @@ At participant start, the environment must have:
   `dbo.SymptomEmbeddings` schema and exactly 207 synthetic source cases.
 - The Foundry `text-embedding-3-small` deployment and SQL server
   system-assigned identity with inference permission.
-- A database master key and one managed-identity credential associated with
-  the actual Foundry resource endpoint.
-- The optional `dbo.AI_GENERATE_RESPONSE` helper and `gpt-5-nano` deployment
-  only if the host intends to support the last optional exercise.
+- The actual Foundry resource endpoint available to participants for notebook
+  00, which creates the database master key and managed-identity credential.
+  Host-prepared matching objects can also be reused.
+- The `gpt-5-nano` deployment only if the host intends to support the last
+  optional exercise. Notebook 4 defines `dbo.AI_GENERATE_RESPONSE` before using
+  it; hosts can also preinstall the same helper.
 
 The host preparation script does not pre-create this track's external model,
 full-text index, chunks, embeddings, vector index, or retrieval procedure.

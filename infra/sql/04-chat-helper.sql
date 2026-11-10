@@ -31,7 +31,7 @@ BEGIN
             FROM sys.database_scoped_credentials
             WHERE name = @Endpoint AND credential_identity = N'Managed Identity'
         )
-        THROW 51002, 'Run Lab 07 to configure the external model and its Foundry managed-identity credential.', 1;
+        THROW 51002, 'Complete notebook 00 for the Foundry managed-identity credential and notebook 1 for the external embedding model association.', 1;
 
     DECLARE @Payload NVARCHAR(MAX), @ApiResponse NVARCHAR(MAX), @ReturnCode INT;
 

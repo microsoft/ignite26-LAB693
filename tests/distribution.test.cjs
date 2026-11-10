@@ -71,7 +71,7 @@ test('official documentation links resolve within the flat distribution', () => 
 });
 
 test('the attendee package is flat and independent of the source retrieval directory', () => {
-  assert.deepEqual(fs.readdirSync(instructions).sort(), [...names, 'README.md'].sort());
+  assert.deepEqual(fs.readdirSync(instructions).sort(), ['00-setup.ipynb', ...names, 'README.md'].sort());
   for (const name of names) {
     const notebook = JSON.parse(fs.readFileSync(path.join(instructions, name), 'utf8'));
     const text = notebook.cells.filter(cell => cell.cell_type === 'markdown')

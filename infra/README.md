@@ -1,5 +1,13 @@
 # Host deployment and preparation
 
+Attendees on the pre-deployed Skillable VM use [00: SQL setup](../instructions/00-setup.ipynb)
+to create the database master key and Foundry credential without PowerShell.
+This guide is for hosts: prepare the resources and seed data before attendee
+access. The automation below also creates those two SQL objects; notebook 00
+reuses them when they match. Supply the actual resource-level Foundry endpoint
+to attendees, not a project URL. Hosts can preinstall the optional chat helper;
+notebook 4 also defines it before the optional intent exercise.
+
 This package prepares the Azure resources and Windows desktop required by the
 [four-notebook attendee track](../instructions/README.md). The skilling
 provider supplies the VM, its build or first-login hooks, and a dedicated

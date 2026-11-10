@@ -18,8 +18,9 @@ const read = name => JSON.parse(fs.readFileSync(path.join(instructions, name), '
 const sql = notebook => notebook.cells.filter(cell => cell.cell_type === 'code')
   .map(cell => cell.source.join('')).join('\n');
 
-test('attendee guide and four ordered notebooks live directly in instructions', () => {
+test('attendee guide, setup, and four ordered notebooks live directly in instructions', () => {
   assert.deepEqual(fs.readdirSync(instructions).sort(), [
+    '00-setup.ipynb',
     '01-beyond-keywords.ipynb',
     '02-case-notes-to-vectors.ipynb',
     '03-search-by-meaning.ipynb',

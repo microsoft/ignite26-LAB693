@@ -16,7 +16,7 @@ IF @DatabaseReady = 1 AND (OBJECT_ID(N'dbo.Cases', N'U') IS NOT NULL)
 INSERT INTO @Checks ([Check], Passed, Skipped, Details)
 VALUES (N'Seeded cases', @Passed,
     CASE WHEN @DatabaseReady = 0 OR NOT (OBJECT_ID(N'dbo.Cases', N'U') IS NOT NULL) THEN 1 ELSE 0 END,
-    N'Complete prework: original Labs 02 and 03, with all 207 synthetic cases.');
+    N'Ask the facilitator to prepare all 207 synthetic cases; verify the database in notebook 00.');
 
 SET @Passed = 0;
 IF @DatabaseReady = 1 AND (1 = 1)
@@ -27,7 +27,7 @@ IF @DatabaseReady = 1 AND (1 = 1)
 INSERT INTO @Checks ([Check], Passed, Skipped, Details)
 VALUES (N'Prepared Foundry credential', @Passed,
     CASE WHEN @DatabaseReady = 0 OR NOT (1 = 1) THEN 1 ELSE 0 END,
-    N'Complete original Lab 06 and original Lab 07 Steps 1 and 2 before this session.');
+    N'Run instructions/00-setup.ipynb Steps 2 and 3 to create the master key and Foundry endpoint credential in Healthcare.');
 
 SELECT CONCAT([Check], N': ', CASE
     WHEN Skipped = 1 THEN CONCAT(N'Skipped - ', Details)

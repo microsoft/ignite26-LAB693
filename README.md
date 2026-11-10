@@ -25,6 +25,10 @@ agent or provide medical advice, diagnoses, or treatment guidance.
 If you're following along during a live session, use the dedicated lab
 environment provided by your host:
 
+Start with [00: SQL setup](instructions/00-setup.ipynb) to save the deployed
+Foundry endpoint in the database before notebook 01. No PowerShell is required
+for attendees.
+
 1. Open this repository in Visual Studio Code and select the **MSSQL** kernel.
 2. Connect to the prepared `Healthcare` database with your assigned Microsoft
    Entra account. Do not connect to `master`, a shared database, or production data.
@@ -39,8 +43,10 @@ The notebooks require a prepared Azure environment; cloning this repository
 alone does not create one.
 
 1. Clone the repository and install Visual Studio Code with the MSSQL extension.
-2. Review the [lab setup and prerequisites](instructions/README.md).
-3. Prepare a dedicated lab environment using the [host deployment guide](infra/README.md).
+2. Use the [host deployment guide](infra/README.md) to deploy the resources
+   and prepare the synthetic case data.
+3. Complete [00: SQL setup](instructions/00-setup.ipynb), then confirm that
+   all three notebook 01 readiness checks say **Yes**.
 4. Start with [Lab 1](instructions/01-beyond-keywords.ipynb), then follow the
    attendee guide and continue through the notebooks:
 
