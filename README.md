@@ -94,20 +94,6 @@ Pick your next step based on your learning style:
 | **[Microsoft Learn](https://aka.ms/ignite26-learn)** | Official documentation and guided learning paths on these topics |
 | **[Microsoft Foundry Community](https://aka.ms/MicrosoftFoundryDiscord-Ignite26)** | Connect with other learners and experts in our Discord community |
 
-### 🌟 Microsoft Learn MCP Server
-
-The Microsoft Learn MCP Server gives your AI agent direct access to Microsoft's official documentation — grounded, up-to-date answers about the topics in this session.
-
-**GitHub Copilot CLI** — Install with:
-
-```shell
-copilot plugin install microsoftdocs/mcp
-```
-
-**VS Code** — One-click install:  
-[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Microsoft_Learn_MCP-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=microsoft-learn&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Flearn.microsoft.com%2Fapi%2Fmcp%22%7D)
-
-For more information, visit the [Learn MCP Server repo](https://aka.ms/learnmcp).
 
 ### 👥 Content owners
 
